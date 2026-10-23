@@ -1,0 +1,129 @@
+
+/* ---------- footer ---------- */
+.site-footer {
+  border-top: 1px solid var(--border);
+  margin-top: 60px;
+  padding: 48px 0 28px;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr 1fr;
+  gap: 32px;
+}
+
+.footer-brand .wordmark { font-size: 18px; }
+
+.footer-brand p {
+  color: var(--text-muted);
+  font-size: 14px;
+  margin-top: 10px;
+  max-width: 32ch;
+}
+
+.footer-col h4 {
+  font-family: 'Sora', sans-serif;
+  font-size: 14px;
+  color: var(--text);
+  margin-bottom: 14px;
+}
+
+.footer-col ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer-col a {
+  color: var(--text-muted);
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.footer-col a:hover { color: var(--text); }
+
+.footer-bottom {
+  border-top: 1px solid var(--border);
+  margin-top: 36px;
+  padding-top: 20px;
+  font-size: 13px;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+.footer-logo {
+  height: 40px;
+  margin-bottom: 12px;
+  display: block;
+}
+
+@media (max-width: 760px) {
+  .footer-grid { grid-template-columns: 1fr; }
+}
+
+/* ---------- botón volver arriba ---------- */
+.btn-subir {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 50%;
+  background: var(--accent-gradient);
+  color: #fff;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(139, 92, 246, 0.35);
+  z-index: 900;                 /* por debajo de los modales (1000) */
+  opacity: 0;
+  visibility: hidden;           /* oculto también para el teclado y lectores */
+  transform: translateY(12px);
+  transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s;
+}
+
+.btn-subir.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+}
+
+.btn-subir.visible:hover { 
+  transform: translateY(-2px); 
+}
+
+.btn-subir:focus-visible { 
+  outline: 2px solid var(--text); outline-offset: 3px; 
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn-subir { transition: none; }
+}
+
+/* Espacio lateral del footer en celular */
+@media (max-width: 760px) {
+  .site-footer {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+/* Botón de subir y footer en celular */
+@media (max-width: 760px) {
+  .btn-subir {
+    width: 42px;
+    height: 42px;
+    right: 14px;
+    bottom: 14px;
+  }
+
+  /* Espacio libre al final para que el botón no tape el texto */
+  .site-footer {
+    padding-bottom: 76px;
+  }
+}

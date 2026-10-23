@@ -1,0 +1,9 @@
+node_modules/
+.env
+coverage/
+
+.env.test
+server.log
+.scannerwork/
+frontend/node_modules/
+frontend/dist/
