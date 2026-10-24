@@ -18,6 +18,11 @@
         "displayName": "unit",
         "testMatch": [
           "<rootDir>/tests/unit/**/*.test.js"
+        ],
+        "coveragePathIgnorePatterns": [
+          "/node_modules/",
+          "<rootDir>/tests/",
+          "<rootDir>/src/application/ports/"
         ]
       },
       {
@@ -27,12 +32,13 @@
         ],
         "setupFilesAfterEnv": [
           "<rootDir>/jest.setup.js"
+        ],
+        "coveragePathIgnorePatterns": [
+          "/node_modules/",
+          "<rootDir>/tests/",
+          "<rootDir>/src/application/ports/"
         ]
       }
-    ],
-    "coveragePathIgnorePatterns": [
-      "/node_modules/",
-      "<rootDir>/tests/"
     ],
     "coverageThreshold": {
       "global": {

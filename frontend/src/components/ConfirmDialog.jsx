@@ -23,7 +23,11 @@ export default function ConfirmDialog({ action, onClose }) {
   }
 
   const done = step === 'done';
-  const label = busy ? 'Procesando...' : done ? 'Aceptar' : error ? 'Reintentar' : action.confirmLabel;
+  // Texto del botón principal según el estado del diálogo
+  let label = action.confirmLabel;
+  if (busy) label = 'Procesando...';
+  else if (done) label = 'Aceptar';
+  else if (error) label = 'Reintentar';
 
   return (
     <Modal onClose={onClose} cardClassName="confirm-card" showClose={false} role="alertdialog" aria-modal="true">

@@ -9,6 +9,7 @@
   width: 100%;
   max-width: 420px;
   text-align: center;
+  position: relative;
 }
 
 .confirm-card h3 { font-size: 22px; }

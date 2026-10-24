@@ -1,4 +1,4 @@
-const MODALITIES = ['in-person', 'virtual'];
+const MODALITIES = new Set(['in-person', 'virtual']);
 
 // Valida el formulario de un evento y devuelve la lista de problemas encontrados
 function findEventProblems({ name, date, location, maxCapacity, modality }) {
@@ -7,7 +7,7 @@ function findEventProblems({ name, date, location, maxCapacity, modality }) {
   if (!date || Number.isNaN(new Date(date).getTime())) problems.push('La fecha no es válida');
   if (!location || !String(location).trim()) problems.push('El lugar es obligatorio');
   if (!Number.isFinite(maxCapacity) || maxCapacity < 1) problems.push('El cupo máximo debe ser un número mayor a 0');
-  if (!MODALITIES.includes(modality)) problems.push('La modalidad no es válida');
+  if (!MODALITIES.has(modality)) problems.push('La modalidad no es válida');
   return problems;
 }
 

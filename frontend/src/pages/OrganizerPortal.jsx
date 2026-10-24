@@ -59,7 +59,7 @@ function PortalContent() {
           <h2 className="section-title">Mi portal</h2>
           <p className="section-sub">Los eventos que has creado, con sus inscritos y reportes.</p>
         </div>
-        <a href="#" className="btn-primary" onClick={(e) => { e.preventDefault(); setForm({ event: null }); }}>+ Nuevo evento</a>
+        <button type="button" className="btn-primary btn-align" onClick={() => setForm({ event: null })}>+ Nuevo evento</button>
       </div>
 
       <StateBox>{error}</StateBox>

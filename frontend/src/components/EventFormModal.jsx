@@ -81,6 +81,10 @@ export default function EventFormModal({ event = null, onClose, onSaved }) {
     }
   }
 
+  // Crear y editar comparten el formulario; solo cambia el texto del botón
+  let submitLabel = event ? 'Guardar' : 'Publicar evento';
+  if (saving) submitLabel = 'Guardando…';
+
   const cls = (key) => (invalid[key] ? 'campo-error' : undefined);
 
   return (
@@ -135,7 +139,7 @@ export default function EventFormModal({ event = null, onClose, onSaved }) {
       <StateBox>{serverError}</StateBox>
 
       <button className="btn-primary" style={{ width: '100%', justifyContent: 'center', marginTop: 22 }} onClick={submit} disabled={saving}>
-        {saving ? 'Guardando…' : event ? 'Guardar' : 'Publicar evento'}
+        {submitLabel}
       </button>
     </Modal>
   );

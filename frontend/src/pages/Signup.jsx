@@ -52,11 +52,11 @@ export default function Signup() {
         <label htmlFor="password">Contraseña</label>
         <PasswordField id="password" value={form.password} onChange={set('password')} autoComplete="new-password" />
 
-        <label>Tipo de cuenta</label>
-        <div className="radio-group">
+        <fieldset className="radio-group">
+          <legend>Tipo de cuenta</legend>
           <label><input type="radio" name="userType" value="participant" checked={form.userType === 'participant'} onChange={set('userType')} /> Participante</label>
           <label><input type="radio" name="userType" value="organizer" checked={form.userType === 'organizer'} onChange={set('userType')} /> Organizador</label>
-        </div>
+        </fieldset>
 
         <button className="btn-primary" type="submit" disabled={busy}>{busy ? 'Creando…' : 'Crear cuenta'}</button>
         <StateBox>{error}</StateBox>

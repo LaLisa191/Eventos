@@ -35,7 +35,7 @@ function Hero({ next, canCreate, onCreate }) {
         <p>Consulta los cupos disponibles en tiempo real y recibe la confirmación de tu registro al instante. Participa en los eventos presenciales y virtuales que tenemos disponibles.</p>
         <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap' }}>
           <a href="#eventos" className="btn-primary">Ver eventos disponibles</a>
-          {canCreate && <a href="#" className="btn-secondary" onClick={(e) => { e.preventDefault(); onCreate(); }}>+ Crear evento</a>}
+          {canCreate && <button type="button" className="btn-secondary btn-align" onClick={onCreate}>+ Crear evento</button>}
         </div>
       </div>
 

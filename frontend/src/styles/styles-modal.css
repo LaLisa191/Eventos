@@ -13,7 +13,20 @@
   overflow: hidden;
 }
 
-.modal-backdrop.open { display: flex; }
+.modal-backdrop.open { 
+  display: flex; 
+}
+
+.modal-overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: default;
+}
 
 .modal-card {
   background: var(--bg-elevated);

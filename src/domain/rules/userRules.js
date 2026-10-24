@@ -1,4 +1,4 @@
-const USER_TYPES = ['organizer', 'participant'];
+const USER_TYPES = new Set(['organizer', 'participant']);
 const MIN_PASSWORD_LENGTH = 6;
 
 function isValidEmail(email) {
@@ -13,7 +13,7 @@ function isValidPassword(password) {
 }
 
 function isValidUserType(userType) {
-  return USER_TYPES.includes(userType);
+  return USER_TYPES.has(userType);
 }
 
 module.exports = { isValidEmail, isValidPassword, isValidUserType, MIN_PASSWORD_LENGTH };

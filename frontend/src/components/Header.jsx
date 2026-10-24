@@ -5,7 +5,7 @@ import Modal from './Modal';
 
 export default function Header() {
   const { user, isOrganizer, logout } = useAuth();
-  const { pathname, hash } = useLocation();
+  const { pathname, hash, search } = useLocation();
   const [menuOpen, setMenuOpen] = useState(false);
   const [confirmLogout, setConfirmLogout] = useState(false);
 
@@ -22,7 +22,8 @@ export default function Header() {
     return () => { window.removeEventListener('scroll', update); window.removeEventListener('resize', update); };
   }, [pathname, hash]);
 
-  const closeMenu = () => setMenuOpen(false);
+  // El menú móvil se cierra al navegar a cualquier ruta (en vez de escuchar clics en la lista)
+  useEffect(() => { setMenuOpen(false); }, [pathname, hash, search]);
   const onHome = pathname === '/' || pathname === '/index.html';
   const activeClass = ({ isActive }) => (isActive ? 'nav-activo' : undefined);
 
@@ -31,7 +32,7 @@ export default function Header() {
       <header className="site-header">
         <Link to="/" className="wordmark" aria-label="Eventos, ir al inicio">Uni<span>Eventos</span></Link>
         <button className="nav-toggle" onClick={() => setMenuOpen(o => !o)} aria-label="Abrir menú">☰</button>
-        <ul className={`nav-links ${menuOpen ? 'open' : ''}`} onClick={closeMenu}>
+        <ul className={`nav-links ${menuOpen ? 'open' : ''}`}>
           <li><Link to="/" className={onHome && !inEvents ? 'nav-activo' : undefined}>Inicio</Link></li>
           <li className="nav-item">
             <Link to="/#eventos" className={onHome && inEvents ? 'nav-activo' : undefined}>Eventos disponibles</Link>
@@ -45,7 +46,7 @@ export default function Header() {
           <li>{user && <NavLink to="/profile" className={activeClass}>Mi perfil</NavLink>}</li>
           <li id="navAccount">
             {user
-              ? <a href="#salir" onClick={(e) => { e.preventDefault(); setConfirmLogout(true); }}>Salir ({user.name.split(' ')[0]})</a>
+              ? <a href="#salir" onClick={(e) => { e.preventDefault(); setMenuOpen(false); setConfirmLogout(true); }}>Salir ({user.name.split(' ')[0]})</a>
               : <NavLink to="/login">Iniciar sesión</NavLink>}
           </li>
           <li className="nav-item"></li>
